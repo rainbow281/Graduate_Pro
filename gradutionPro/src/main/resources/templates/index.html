@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>毕业设计-闫彩虹</title>
+    <!-- core CSS -->
+    <link href="/css/bookstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/animate.min.css" rel="stylesheet">
+    <link href="/css/owl.carousel.css" rel="stylesheet">
+    <link href="/css/owl.transitions.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/ladda.min.css" rel="stylesheet">
+    <link href="/css/jquery-accordion-menu.css" rel="stylesheet" type="text/css" />
+    <style>
+        body {
+            font-size: 15px;
+            font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei, sans-serif, sans-serif;
+            font-weight: 300;
+            color: #454545;
+            font-size: 15px;
+            line-height: 26px;
+            background-color: #999999;
+        }
+
+        .navbar-left:hover {
+            background-color: #f0f0f0;
+        }
+
+        .box-bottom .btn {
+            border-radius: 30px;
+            margin-top: 25px;
+            margin-left: 25px;
+            padding: 15px 25px 10px;
+            font-size: 18px;
+            font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei, sans-serif;
+        }
+
+        .recognize {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 30px;
+            border: 1px solid #eee;
+            border-radius: 5px 5px 4px 4px;
+            padding: 15px;
+            text-align: center;
+            background: #fff;
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        .result {
+            height: 660px;
+            border-radius: 8px 8px 6px 6px;
+            background: #fff;
+            position: relative;
+        }
+
+        .box-head {
+            padding: 10px;
+            border-radius: 8px 8px 0px 0px;
+            height: 50px;
+            color: #fff;
+            background: #0099cc;
+        }
+
+        .box-head p {
+            float: left;
+            margin-left: 10px;
+            font-size: 20px;
+            line-height: 30px;
+        }
+
+        .box-head a {
+            margin-right: 10px;
+            float: right;
+        }
+
+        .result .content {
+            padding: 10px;
+        }
+
+        .box-bottom {
+            bottom: 0px;
+        }
+
+        .origin-text {
+            resize: none;
+        }
+
+        .main-section {
+            padding: 84px 0 70px 0px;
+        }
+
+
+        #particles-js {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            z-index: -1;
+            background-color: #999;
+        }
+
+        #footer {
+            position: fixed;
+            bottom: 0px;
+            width: 100%;
+            opacity: 0.8;
+        }
+
+        canvas {
+            position: fixed;
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 1px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            border-radius: 3px;
+            -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+            background: #535353;
+        }
+
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+            border-radius: 3px;
+            background: #EDEDED;
+        }
+
+        .general .tree-menu {
+            height: 610px;
+            border-radius: 0px 0px 6px 6px;
+            overflow-y: scroll;
+            background: #fff;
+        }
+
+
+        .result .content p {
+            font-size: 18px;
+            line-height: 200%;
+            padding: 5px;
+            height: 560px;
+            display: block;
+            border: 1px solid #eee;
+            border-radius: 5px 5px 4px 4px;
+            overflow-y: scroll;
+        }
+
+        b.event {
+            margin: auto 10px auto 10px;
+            text-decoration: underline;
+        }
+
+        span.event {
+            font-weight: bold;
+            text-decoration: underline;
+            background: #eee;
+        }
+
+        span.NUM {
+            background-color: #FF9999;
+        }
+
+        span.TRI {
+            background-color: #FFCC66;
+        }
+
+        span.BEG {
+            background-color: #FFFF33;
+        }
+
+        span.END {
+            background-color: #CCFF99;
+        }
+
+        span.ORG {
+            background-color: #99CCFF;
+        }
+
+        span.NAME {
+            background-color: #CCCCFF;
+        }
+    </style>
+</head>
+
+<body>
+<!-- <header id="header">
+    <nav id="main-menu" class="navbar navbar-default top-nav-collapse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse navbar-left">
+                <ul class="nav navbar-nav">
+                    <li class="scroll active">
+                        <a href="online-extract.html">事件抽取</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse navbar-left">
+                <ul class="nav navbar-nav">
+                    <li class="scroll">
+                        <a href="online-graph.html">金融图谱</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse navbar-left">
+                <ul class="nav navbar-nav">
+                    <li class="scroll">
+                        <a href="online-qa.html">知识问答</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="collapse navbar-collapse navbar-right">
+                <ul class="nav navbar-nav">
+                    <li class="scroll">
+                        <a href="index.html">返回主页</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header> -->
+
+<div class="main-section">
+    <div class="container">
+        <div>
+            <div id="input-main">
+                <div class="section-header">
+                    <h2 class="section-title text-center">个人隐私信息自动识别系统</h2>
+                    <!-- <p class="text-center">请在下方输入你的文字，或点击样例尝试。<br>右键可取消/隐藏实体。点击名称可以跳转到图谱页面。</p> -->
+                </div>
+                <div class="recognize">
+                    <div>
+                        <textarea id="origin_text" placeholder="请在这里输入你的文本。" rows="20" class="form-control origin-text"></textarea>
+                    </div>
+                    <div class="box-bottom">
+                        <button id="recognize_btn" data-color="green" class="ladda-button" onclick="recognize()" data-style="zoom-in">
+                            <span class="ladda-label">识别</span>
+                        </button>
+                        <select id="sample-list" data-color="blue" class="ladda-button" onchange="sampleSelect()" onclick="sampleSelect()">
+                            <option value="0">样例1</option>
+                            <option value="1">样例2</option>
+                            <option value="2">样例3</option>
+                            <option value="3">样例4</option>
+                            <option value="4">样例5</option>
+                            <option value="5">样例6</option>
+                            <option value="6">样例7</option>
+                            <option value="7">样例8</option>
+                            <option value="8">样例9</option>
+                            <option value="9">样例10</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div id="result-main" style="display:none">
+                <div class="col-xs-4">
+                    <div class="general">
+                        <div class="box-head">
+                            <p>概览</p>
+                            <a class="btn btn-primary" onclick="current_event='';filldata(jsonTemp);">全部分析结果</a>
+                        </div>
+                        <div class="tree-menu">
+
+                            <div id="jquery-accordion-menu" class="jquery-accordion-menu red">
+                                <!-- <div class="jquery-accordion-menu-header" id="form"></div> -->
+                                <ul id="demo-list">
+                                    <li class="menu-item">
+                                        <a href="#" class="submenu-indicator-minus">
+                                            <i class="fa fa-gavel"></i><b id="event-title">冻结事件</b></a>
+                                        <span id="event-span" class="event jquery-accordion-menu-label">12</span>
+                                        <ul id="event-ul" class="submenu" style="display: block;">
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="#" class="submenu-indicator-minus">
+                                            <i class="fa fa-gears"></i><b id="TRI-title">事件触发词</b></a>
+                                        <span id="TRI-span" class="TRI jquery-accordion-menu-label">12000</span>
+                                        <ul id="TRI-ul" class="submenu" style="display: block;">
+
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="#" class="submenu-indicator-minus">
+                                            <i class="fa fa-line-chart"></i><b id="NUM-title">冻结股数</b></a>
+                                        <span id="NUM-span" class="NUM jquery-accordion-menu-label">12</span>
+                                        <ul id="NUM-ul" class="submenu" style="display: block;">
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="#" class="submenu-indicator-minus">
+                                            <i class="fa fa-play"></i><b id="BEG-title">冻结起始日期</b></a>
+                                        <span id="BEG-span" class="BEG jquery-accordion-menu-label">12</span>
+                                        <ul id="BEG-ul" class="submenu" style="display: block;">
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="#" class="submenu-indicator-minus">
+                                            <i class="fa fa-stop"></i><b id="END-title">冻结截止日期</b></a>
+                                        <span id="END-span" class="END jquery-accordion-menu-label">12</span>
+                                        <ul id="END-ul" class="submenu" style="display: block;">
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="#" class="submenu-indicator-minus" >
+                                            <i class="fa fa-institution"></i><b id="ORG-title">执行冻结机构</b></a>
+                                        <span id="ORG-span" class="ORG jquery-accordion-menu-label">12</span>
+                                        <ul id="ORG-ul" class="submenu" style="display: block;">
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item">
+                                        <a href="#" class="submenu-indicator-minus">
+                                            <i class="fa fa-male"></i><b id="NAME-title">被冻结股东名称</b></a>
+                                        <span id="NAME-span" class="NAME jquery-accordion-menu-label">12</span>
+                                        <ul id="NAME-ul" class="submenu" style="display: block;">
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-8">
+                    <div class="result">
+                        <div class="box-head">
+                            <p>文本</p>
+                            <a class="btn btn-success" href="online-extract.html">返回</a>
+                        </div>
+                        <div class="content">
+                            <p id="result-text">结果内容</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="particles-js"></div>
+<script src="/js/jquery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/mousescroll.js"></script>
+<script src="/js/smoothscroll.js"></script>
+<script src="/js/jquery.prettyPhoto.js"></script>
+<script src="/js/jquery.isotope.min.js"></script>
+<script src="/js/jquery.inview.min.js"></script>
+<script src="/js/wow.min.js"></script>
+<script src="/js/scrolling-nav.js"></script>
+<script src="/js/particles.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/spin.min.js"></script>
+<script src="/js/ladda.min.js"></script>
+<script src="/js/ladda.jquery.min.js"></script>
+<script src="/js/jquery-accordion-menu.js" type="text/javascript"></script>
+<script>
+    var l = Ladda.create(document.getElementById("recognize_btn"));
+    var jsonTemp = [];
+    var current_event = "";
+    var event_list = [];
+    var testArr = [
+        "证券代码：300295证券简称：三六五网公告编号：2016-019江苏三六五网络股份有限公司关于持股5%以上股东减持计划的公告本公司及董事会全体成员保证信息披露的内容真实、准确、完整，没有虚假记载、误导性陈述或重大遗漏。特别提示：本公司股东邢炜先生计划在2016年6月10日后的12个月内,以大宗交易或集中竞价方式减持不超过本公司股份989万股（占本公司总股本比例5.15%）。其中，通过集中竞价减持股份的总数连续三个月不能超过公司总股本的1%。江苏三六五网络股份有限公司（以下简称：“三六五网”或“公司”）于2016年5月10日收到公司股东邢炜先生《关于持股5%以上股东股份减持计划告知函》，现将有关情况公告如下：一、股东情况1、股东姓名：邢炜2、截至本公告日，邢炜先生直接持有公司19,780,240股,占公司总股本的10.30%；上述股票将在2016年6月10日解除限售(董事离职后根据有关规定锁定)。二、本次减持计划的主要内容1、减持目的：个人资金安排。2、减持期间：自2016年6月10日起十二个月内。3、拟减持的数量：不超过989万股，不超过公司总股本的5.15%。若计划减持期间有送股、资本公积金转增股本等股份变动事项，上述股份数量做相应调整。4、减持方式：包括但不限于集中竞价交易、大宗交易等。5、减持价格：根据减持时市场价格确定。三、与股份相关股东承诺履行情况：邢炜先生在公司首次公开发行及上市时承诺为：“自公司股票上市之日起三十六个月内，不转让或者委托他人管理本次发行前已直接或间接持有的发行人股份，也不由发行人回购该部分股份。”邢炜先生在担任公司董事监事、高管时承诺：“在其任职期间每年转让直接或间接持有的公司股份不超过其所持有公司股份总数的百分之二十五；离职后半年内，不转让其直接或间接持有的公司股份。”2015年3月12日，邢炜作为原共同控制人，与其他三位共同实际控制人共同承诺：“在限售股解禁后12个月内，四名共同实际控制人及其关联人李东、沈丽除出售及赠予给员工持股计划的股份外，实际减持其直接持有股份数不超过占公司总股本的4.65%；”截至本公告日，邢炜先生已正常完毕履行了上述承诺，不存在违反上述承诺的行为。四、其他事项1、在按照该计划减持股份期间，邢炜先生将严格遵守《深圳证券交易所创业板股票上市规则》、《深圳证券交易所创业板上市公司规范运作指引》等有关法律法规及公司规章制度。2、邢炜先生已不是公司共同实际控制人，本减持计划不会对公司治理结构、股权结构及持续经营产生重大影响，公司基本面未发生重大变化。敬请广大投资者理性投资。本次减持计划如完全实施后，邢炜先生仍是公司持股5%以上股东。五、备查文件1、邢炜先生的《关于持股5%以上股东股份减持计划告知函》。特此公告！江苏三六五网络股份有限公司董事会2016年5月11日",
+        "证券代码：603690证券简称：至纯科技公告编号：2017－027上海至纯洁净系统科技股份有限公司关于公司股东部分股权质押的公告本公司董事会及全体董事保证本公告内容不存在任何虚假记载、误导性陈述或者重大遗漏，并对其内容的真实性、准确性和完整性承担个别及连带责任。2017年3月27日，上海至纯洁净系统科技股份有限公司（以下简称“公司”或“本公司”）收到公司控股股东陆龙英女士、公司股东吴海华先生将其所持有的本公司部分有限售条件流通股质押的通知。具体情况如下：一、本次股份质押的具体情况公司控股股东陆龙英女士于2017年3月27日将其所持有的本公司1500万股有限售条件流通股质押给兴业证券股份有限公司，期限自交易当日起至2020年1月27日或双方办理解除质押登记手续为止。相关质押登记手续已在中国证券登记结算有限公司上海分公司办理完毕。截至本公告日，陆龙英女士持有公司股份总数2786.16万股，占公司股份总数的13.4%，本次质押股份数量为1500万股，占公司股份总数的7.21%。公司股东吴海华先生于2017年3月27日将其所持有的本公司150万股有限售条件流通股质押给兴业证券股份有限公司，期限自交易当日起至2020年1月27日或双方办理解除质押登记手续为止。相关质押登记手续已在中国证券登记结算有限公司上海分公司办理完毕。截至本公告日，吴海华生先持有公司股份总数1014万股，占公司股份总数的4.88%，本次质押股份数量为150万股，占公司股份总数的0.72%。二、控股股东的质押情况说明陆龙英女士本次股份质押主要用于个人融资。陆龙英女士个人资信状况良好，具备资金偿还能力，有足够的风险控制能力，不存在引发平仓风险或被强制平仓的情形，未出现导致公司实际控制权发生变更。1特此公告。上海至纯洁净系统科技股份有限公司董事会2017年3月28日2",
+
+        "证券代码：300195证券简称：长荣股份公告编号：2016-103天津长荣印刷设备股份有限公司控股股东、实际控制人进行质押式回购交易的公告本公司及董事会全体成员保证信息披露内容的真实、准确和完整，没有虚假记载、误导性陈述或重大遗漏。天津长荣印刷设备股份有限公司（以下简称“本公司”）近日接到控股股东、实际控制人李莉女士的通知，其于2016年9月29日将其持有的本公司部分股票与上海海通证券资产管理有限公司（以下简称“海通资管”）进行了股票质押式回购交易，现将具体内容公告如下：一、股票质押基本情况。1、本次股票质押基本情况是否为质押开本次质第一大股东名始日期质押到押占其股东及质押股数质权人用途称（逐笔期日所持股一致行列示）份比例动人2016年2018年海通资李莉是51,450,0009月299月2847.43%融资管日日合计51,450,00047.43%2、股东股份累计被质押的情况截至目前，李莉女士直接持有公司股份108,474,000股，占公司股份总数的32.16%。本次李莉女士质押其直接持有的本公司股份51,450,000股，占其直接持有公司股份总数的47.43%，占公司股份总数的15.25%。本次质押后，李莉女士累计质押本公司股份60,900,000股，占其直接持有公司股份总数的56.14%，占公司股份总数的18.05%。3、李莉女士质押的股份未出现平仓风险或被强制过户的风险。二、备查文件1、股份质押证明；2、中国证券登记结算有限责任公司股份冻结明细。特此公告。天津长荣印刷设备股份有限公司董事会2016年9月30日",
+        "长久物流：关于控股股东股份冻结的公告\", \"原始公告\": \"证券代码：603569证券简称：长久物流公告编号：2016-【002】北京长久物流股份有限公司关于控股股东股份冻结的公告本公司董事会及全体董事保证本公告内容不存在任何虚假记载、误导性陈述或者重大遗漏，并对其内容的真实性、准确性和完整性承担个别及连带责任。北京长久物流股份有限公司（以下简称“长久物流”或“公司”）于近日收到上海证券交易所通知，公司控股股东吉林省长久实业集团有限公司（以下简称“长久集团”）持有公司的部分股份被冻结，具体情况如下：一、股份冻结的具体情况因长久集团与中国光大银行股份有限公司长春分行（以下简称“光大长春”）及第三人大理鸿迪汽车销售服务有限公司（以下简称“大理鸿迪”）合同纠纷一案，光大长春向吉林省长春市中级人民法院（以下简称“长春中院”）申请冻结长久集团在银行的存款人民币4,307万元或查封、扣押其相应价值的财产。长春中院根据其作出的（2016）吉-01民初字第682-1号《民事裁定书》和《协助执行通知书》，对长久集团持有的公司4,307万股股份（限售流通股）进行司法冻结。此次冻结包括孳息（包括派发的送股、转增股利及现金股利），冻结期限从2016年8月12日至2018年8月11日止。截止本公告出具日，长久集团持有公司30,463.618万限售股，占公司总股本的76.16%。本次冻结股份后，长久集团所持公司股份冻结数量为4,307万股，占所持股份的14.14%，占公司总股本的10.77%。二、本次冻结对控股权的影响经公司向长久集团了解，长久集团目前尚未接到上述案件的起诉状，长久集团正在积极处理本次事件，此次股份冻结不会对公司的控制权产生影响，也不会影响公司的正常经营。公司将密切关注上述冻结事项的进展并及时履行信息披露义务。特此公告。北京长久物流股份有限公司董事会2016年8月15日",
+        "证券代码：000018、200018证券简称：神州长城、神州B公告编号：2016-013神州长城股份有限公司关于深圳证券交易所关注函回复的公告本公司及董事会全体成员保证信息披露的内容真实、准确和完整，没有虚假记载、误导性陈述或重大遗漏。神州长城股份有限公司（以下简称“公司”、“神州长城”）于2016年2月15日在巨潮资讯网、《证券时报》和《香港商报》刊登了《关于2015年度利润分配及资本公积转增股本预案的预披露公告》（公告编号：2016-011），披露了公司控股股东及实际控制人陈略先生提议的公司2015年度利润分配预案的相关情况。2016年2月18日，公司收到深圳证券交易所《关于对神州长城股份有限公司利润分配预案预披露的关注函》（公司部关注函【2016】第12号，以下简称“《关注函》”）。对此，公司高度重视，根据关注函要求，及时组织相关人员对相关事项进行了核查，现就《关注函》中相关问题回复说明如下：一、结合公司所处行业特点、自身发展阶段、经营模式、盈利水平、未来发展计划、重大资产重组后公司经营整合情况等，请进一步说明推出上述利润分配预案的原因及合理性，并详细分析与你公司发展阶段的匹配性。回复说明：1、公司所处行业特点、发展阶段、经营模式和未来发展计划等公司目前所处行业为建筑施工类，主要从事工程总承包（海外）、装饰、机电安装、幕墙设计与施工，医院的PPP、BOT项目建设等等。经过多年业务布局和经验积累，凭借多年深耕海外市场形成的人才优势、营销渠道优势、施工能力优势等，目前公司海外业务已遍布中东、东南亚、非洲等多个国家和地区，公司已经在多个国家创建了良好的口碑和公司形象。2013年9月和10月，国家主席习近平分别提出建设“新丝绸之路经济带”和“21世纪海上丝绸之路”的战略构想，不仅出于中国发展的现实需要，也符合所有沿线国家和相关国家的战略利益。“一带一路”沿线国家近60个，大多是1新兴经济体和发展中国家，总人口约44亿，经济总量约为21万亿美元，分别占全球的63%和29%。这些国家尚处在工业化初期阶段，普遍处于经济发展的上升期。国家“一带一路”战略的实施，为中国企业“走出去”创造出了难得的历史机遇，特别为公司这样的民营企业的海外业务带来了广阔的发展空间。公司海外业务规模处于快速扩张和收获阶段。公司在海外市场中东和东南亚地区的主要竞争对手主要是韩国的三星、现代、浦项钢铁和欧美的大型企业等，中国的中建、中铁、中交等大型央企也是公司在海外市场的主要竞争对手和合作伙伴。公司在参与大型建设项目的招投标过程中，公司的整体经营规模和注册资本也是业主评估公司整体实力的一个重要方面。所以，为了提升公司在海外市场的整体实力和外在形象，提升公司的竞争力，公司需要业务规模和注册资本的同比快速扩张。国内业务方面，公司已经从传统的装饰、机电、幕墙业务，扩展到医疗业务方面：2015年12月17日，公司与四川省佳乐企业集团有限公司在四川省泸州市签署了《关于成立神州佳乐医疗投资管理有限责任公司的协议》。拟共同出资设立神州佳乐医疗投资管理有限责任公司，采用PPP、BOT等运作模式收购现有医院，投资建设新院等医疗项目、养老项目（详见2015年12月18日在巨潮资讯网（www.cninfo.com.cn）上披露的《公司重大投资公告》，公告编号2016-07026）；2016年1月18日，公司和北京安杰资产管理股份有限公司签订关于设立神州安杰医疗产业投资基金的框架合作协议，有利于公司更好地采用PPP、BOT等运作模式收购现有医院，投资建设新院等医疗项目、养老项目，扩大公司的生态产业链（详见2016年1月18日在巨潮资讯网（www.cninfo.com.cn）上披露的《关于与北京安杰资产管理股份有限公司签订设立神州安杰医疗产业投资基金框架合作协议的公告》，公告编号2016-007）；2016年1月22日，公司和国药集团融资租赁有限公司签订战略合作协议，拟在医疗工程承包、医疗投资、融资租赁等领域开展合作。以上投资和合作将推动公司医疗工程承包业务和健康医疗投资业务的发展，提升公司健康医疗产业竞争优势和公司整体盈利水平（详见2016年1月22日在巨潮资讯网（www.cninfo.com.cn）上披露的《关于与国药集团融资租赁有限公司签订战略合作框架协议的公告》，公告编号2016-008）。医疗行业前景广阔，公司已全面开展医疗方面工作。2未来公司会继续加大加快对国内外的建筑施工行业和医疗产业的投资力度和收购兼并进程，使公司业绩实现持续快速增长。2、重大资产重组后公司经营整合情况2015年10月份，公司实施完成了资产置换及发行股份购买资产并募集配套融资的重大资产重组，并在当月完成了董事会和管理层的换届和选聘工作，公司的各项内控制度根据新的业务情况正在修改完善过程中。本次重大资产重组涉及的置入资产和置出资产已全部完成变更登记和过户手续，深圳中冠纺织印染股份有限公司原有职工根据“人随资产走”的原则，均已脱离公司。公司的主营业务已经由原来的纺织业务变更为建筑施工类业务，目前经营情况良好，海外业务订单丰富，持续经营能力和盈利能力显著改善。经公司财务部门初步测算,2015年度公司实现净利润在35,000万元至38,000万元之间，公司于2016年1月26日进行了公开披露。（详见2016年1月26日在巨潮资讯网（www.cninfo.com.cn）上披露的《神州长城股份有限公司2015年度业绩预告公告》公告编号2016-010），业绩增速较快。3、利润分配预案提出的原因说明公司2015年度利润分配预案是在保证公司正常经营和长远发展的前提下，综合考虑公司目前稳定的经营情况以及良好的发展前景，结合公司的业务发展需要及发展战略等因素提出来的，公司2015年度进行资本公积转增股本、增加股本总额，符合公司经营规模不断扩大、主营业务持续成长的现实情况；同时有利于完善公司股本结构和提高公司股票的流动性，提升公司的形象和竞争能力，为公司进一步做大做强创造良好条件。公司本次以资本公积转增股本，不会对公司净资产收益率以及投资者持股比例产生实质性影响，不会造成公司流动资金短缺或其他不良影响，不存在损害股东、各相关方利益的情形。4、本次利润分配预案的合理性分析公司控股股东及实际控制人陈略先生根据公司2014年度经审计财务数据及经审验的资本公积增加额，对2015年度以资本公积转增股本预案的分配范围进行测算比对：根据大华会计师事务所（特殊普通合伙）出具的大华审字[2015]000917号《审计报告》，截至2014年12月31日，公司经审计的资本公积为人民币331,606,598.00元。2015年10月，公司完成向陈略等17名交易对方合计发行251,849,593股份购买相关资产事宜，发行价格为9.84元/股。根据瑞华会计师事务所（特殊普通合伙）出具的瑞华验字[2015]48250011号《验资报告》，截至2015年7月29日止，公司已收到神州长城全体股东缴纳的新增注册资本合计251,849,593元，公司变更后的注册资本为420,991,949元，股本为420,991,949元。本次增加资本公积2,226,350,402.12元。2015年11月，公司完成非公开发行新股募集重组配套资金。根据瑞华会计师事务所（特殊普通合伙）出具的瑞华验字【2015】48250015号《验资报告》，截至2015年10月28日止，本公司募集资金总额为254,999,988.72元，扣除发行费用11,500,000元后，实际募集资金净额为243,499,988.72元，其中，新增注册资本为25,914,633.00元，增加资本公积为217,585,355.72元，变更后实收资本（股本）为446,906,582.00元。通过实施重大资产重组并募集配套资金，公司共增加资本公积2,443,935,757.84元,加之以前年度资本公积合计约2,475,542,355.84元。经合理推算，公司截至2015年12月31日的资本公积金账面金额能够覆盖本次预案125,133.8430万元的分配总额。公司2015年度以资本公积金转增股本的预案未超出截至2015年12月31日财务成果的可分配范围。二、请向你公司持股5%以上的股东、董事、监事和高级管理人员及其关联人进一步核实是否存在未来6个月内的减持计划，并对外明确披露减持意向。回复说明：经书面问询，公司持股5%以上的股东、董事、监事和高级管理人员及其关联人就未来6个月内的减持计划，核实确认如下：1、公司董事、监事和高级管理人员及其关联人在未来6个月内没有减持计划。2、公司控股股东及实际控制人陈略先生及其一致行动人何飞燕女士与何森先生在未来6个月内没有减持计划。陈略先生持有公司股份153,406,462股，占公司股份总数的34.33%,陈略先生的一致行动人何飞燕女士持有公司股份14,421,173股,占公司股份总数的43.23%，陈略先生的一致行动人何森先生持有公司股份430,904股,占公司股份总数的0.10%，陈略先生及其一致行动人何飞燕女士与何森先生总计持有公司股份37.65%。2015年12月29日至2016年1月5日，陈略先生通过二级市场以竞价交易方式增持公司股份329,800股，成交均价为44.19元/股。3、华联控股股份有限公司及其关联人关于未来六个月内的减持计划截至公告披露日，华联控股股份有限公司（以下简称“华联控股”）持有公司股份43,141,032股，占公司股份总数的9.65%；华联控股的关联人富冠投资有限公司持有公司股份6,114,556股，占公司股份总数的1.37%；华联控股的股东华联发展集团有限公司持有公司4,481,089股，占公司股份总数的1.003%。华联控股及其关联人富冠投资有限公司和华联发展集团有限公司共计持有公司股份53,736,677股，占公司股份总数的12.02%。2016年2月19日，华联控股以书面方式通知公司称出于自身发展需要，华联控股计划在2016年3月9日至2016年8月31日期间，通过大宗交易的方式减持数量不超过20,000,000股公司股份（若此期间有送股、资本公积金转增股本等股份变动事项，对该数量股份做相应处理），本次拟减持数量约占公司总股本的4.48%。富冠投资有限公司和华联发展集团有限公司以书面方式通知公司称，出于自身发展需要，以上两公司计划自公告日起六个月内，如价格合适，通过集中竞价交易方式将持有的全部股份减持完毕（若此期间有送股、资本公积金转增股本等股份变动事项，对该等数量股份做相应处理）。减持价格A股不低于40元人民币/股，B股不低于15港元/股。自公告日起至2016年8月31日间，华联控股及其关联人富冠投资有限公司和华联发展集团有限公司共计划减持30,595,645股，占公司股份总数的比例为6.85%。三、上述利润分配预案的筹划过程，你公司在信息保密和防范内幕交易方面所采取的措施，相关信息的保密情况以及是否存在信息泄漏。回复说明：2016年2月15日,公司控股股东及实际控制人陈略先生向公司董事会提交5了《关于神州长城股份有限公司2015年度利润分配预案的提案及承诺》。公司随即于午间发布了《关于2015年度利润分配及资本公积转增股本预案的预披露公告》。2016年2月4日，公司控股股东及实际控制人陈略先生向各位董事提出了公司2015年度利润分配预案意向，全体董事认为陈略先生关于公司2015年度的利润分配预案提案是基于公司良好运营状况，并结合公司未来的发展前景和战略规划，在保证公司正常经营和长远发展的前提下提出的。分配预案充分考虑了广大投资者的合理诉求，与公司经营业绩及未来发展相匹配，有利于优化公司股本结构，符合公司的长远发展规划。2015年2月15日，公司控股股东及实际控制人陈略先生向董事会提交了2015年度的利润分配预案提案，全体董事签署了《关于同意陈略先生提交的神州长城股份有限公司2015年度利润分配预案的书面确认书》，同时，全体董事承诺在公司董事会审议上述资本公积金转增股本的相关预案时投同意票。在筹划利润分配预案过程中，公司同时向全体董事和相关人员递交了《神州长城股份有限公司内幕信息保密提示函》、《神州长城股份有限公司禁止内幕交易告知书》，并及时与全体董事和相关人员签署了《神州长城股份有限公司内幕信息保密协议》，在保证相关事项必要决策流程的同时，有效地控制内幕信息知情人范围，严格落实内幕信息知情人登记制度、切实履行严禁内幕交易的告知义务，从而对相关内幕信息进行了严格保密，不存在信息泄漏的情形。四、根据本所《主板上市公司规范运作指引》的相关规定，详细说明近期接待机构和个人投资者调研的情况，是否存在违反公平披露原则的事项。回复说明：2016年，公司分别于1月20日和2月1日接待了两批机构投资者调研，与投资机构进行了沟通交流，公司对来访调研机构和人员均予以详细记载，内容包括活动时间、地点、方式、当事人姓名、活动中谈论的有关公司的内容等并及时通过深圳证券交易所上市公司业务专区在深交所互动易网站进行了刊载，在接待机构调研活动中未提供与公司相关的未公开重大信息，未进行误导性陈述，未提供、传播虚假信息，公司接待机构投资者调研符合《主板上市公司规范运作指引（2015年修订）》，不存在违反公平披露的情形。6五、核查你公司董事、监事、高级管理人员及其直系亲属、上述利润分配预案的内幕信息知情人是否存在买卖你公司股票的行为，是否存在涉嫌内幕交易的情形。回复说明：在本次预案披露后，公司对公司董事、监事、高级管理人员及其直系亲属、该事项的内幕信息知情人买卖公司股票行为进行了书面函证并核查，未发现上述人员在知悉本次预案内幕信息时至公告披露后两日内存在买卖公司股票的行为、也未发现存在涉嫌内幕交易的情形。六、你公司认为应当说明或披露的其他事项。回复说明：除公司已经披露的公开信息外，不存在根据《深圳证券交易所股票上市规则》等有关规定应予以披露而未披露的其他事项，根据上述事项的进展情况，公司及全体董事、监事、高级管理人员严格遵守《证券法》、《公司法》等法律、法规及《深圳证券交易所股票上市规则》的规定，及时、公平、真实、准确、完整地履行信息披露义务。特此公告。神州长城股份有限公司董事会二○一六年二月二十二日7",
+        "证券代码：000156证券简称：华数传媒公告编号：2016-008华数传媒控股股份有限公司关于公司股东股权司法冻结的公告本公司及董事会全体成员保证信息披露内容的真实、准确和完整，没有虚假记载、误导性陈述或重大遗漏。近日，华数传媒控股股份有限公司（以下简称“公司”）通过查询中国证券登记结算有限责任公司深圳分公司下发的《股份冻结数据》，公司股东湖南千禧龙投资发展有限公司持有的公司股份中55,000,047股股份被湖南省高级人民法院2016湘执保协字第9号司法冻结，冻结期限自2016年2月18日至2019年2月17日。截至本公告日，湖南千禧龙投资发展有限公司共持有本公司股份98,000,047股，占公司总股本的6.84%。其中：质押43,000,000股，占公司总股本的3.00%；本次司法冻结55,000,047股，占公司总股本的3.84%。公司将密切关注该事项的后续进展情况，并及时履行信息披露义务。本次司法冻结不会对公司的生产经营造成影响，也不会导致公司控制权发生变化。华数传媒控股股份有限公司董事会2016年3月8日第1页共1页",
+
+
+        "证券代码：002262证券简称：恩华药业公告编号：2016-002江苏恩华药业股份有限公司关于控股股东股份减持计划的提示性公告本公司及董事会全体成员保证信息披露的内容真实、准确、完整，没有虚假记载、误导性陈述或重大遗漏。江苏恩华药业股份有限公司（以下简称“公司”）于2016年1月15日收到公司控股股东徐州恩华投资有限公司（以下简称“恩华投资”）通知，恩华投资拟减持其持有的公司部分股份，现将有关情况提示如下：一、恩华投资持股情况截至本公告日，恩华投资持有公司股份194,503,039股，占公司总股本的40.09%，均为无限售条件流通股。二、股份减持计划1、减持股东：徐州恩华投资有限公司，公司控股股东。2、减持原因：恩华投资为了解决其自身的资金需求，同时优化公司股东结构，增加股票的流动性。3、减持期间：自2016年1月15日—2016年7月14日(根据中国证监会及深圳证券交易所相关规定禁止减持的期间除外)。4、拟减持比例及数量：恩华投资此次拟减持比例不超过公司总股本的5.0%，所减持股份数量不超过24,258,341股；若上述计划减持期间内有送股、资本公积金转增股本等股份变动事项，则做相应调整。5、股份来源：原始股份及其孳生的送、转股。6、减持方式：大宗交易。三、其他事项1、关于股份锁定及股份减持方面的承诺（1）首次公开发行时关于股份锁定的承诺公司控股股东恩华投资承诺：自公司股票上市之日起36个月内不转让或者委托他人管理其持有的公司股份，也不由公司回购其持有的股份。承诺期限届满后，上述股份可以上市流通和转让。（2）股份减持方面的承诺12015年7月9日，为了维护公司股价稳定，公司控股股东恩华投资承诺自2015年7月9日起未来6个月内不减持公司股票。恩华投资均履行了上述所作承诺，本次计划减持股份不存在违反其股份锁定承诺的情况。2、实施本次减持计划后，控股股东恩华投资持有的公司股份不低于170,244,698股，占公司股份总数的比例不低于35.09%，仍为公司控股股东。3、恩华投资不存在非经营性占用公司资金的情形，公司对其也不存在任何担保；最近一年内，恩华投资未受到过深圳证券交易所公开谴责或通报批评处分，公司股票也未被实施退市风险警示等情形。4、本次减持计划不存在违反《证券法》、《上市公司收购管理办法》、《上市公司大股东、董监高减持股份的若干规定》等法律法规、部门规章、规范性文件和《深圳证券交易所中小企业板上市公司规范运作指引》等规定的情况，亦不存在违反股东股份锁定及减持相关承诺的情况。5、公司将督促恩华投资按照有关规定进行股份减持，并及时履行信息披露义务。6、公司基本面未发生重大变化。四、备查文1、《徐州恩华投资有限公司股份减持计划的告知函》。2、深交所要求的其他文件。特此公告。江苏恩华药业股份有限公司董事会2016年1月15日2",
+
+
+        "股票代码：000564股票简称：西安民生公告编号：2017-020西安民生集团股份有限公司关于股东部分股份质押的公告本公司及董事会全体成员保证信息披露的内容真实、准确、完整，没有虚假记载、误导性陈述或重大遗漏。西安民生集团股份有限公司（以下简称“公司”或“西安民生”）于近日接到公司股东湖南新合作实业投资有限公司（以下简称“湖南新合作”）通知，湖南新合作将其持有的本公司部分股份办理了质押手续，具体情况如下：一、湖南新合作持股本次质押情况湖南新合作与江苏银行股份有限公司北京分行签订了股票质押合同，于2017年2月15日将其持有的本公司100,000,000股股份办理了质押融资。是否为第一本次质押质押开始日期质押到期日股东名称大股东及一质押股数（股）质权人占其所持用途（年-月-日）（年-月-日）致行动人股份比例湖南新合作实业投江苏银行股份有否100,000,0002017-2-152022-2-1431.53%融资资有限公司限公司北京分行二、湖南新合作持有股份累计被质押情况截至公告披露日，湖南新合作共持有西安民生股票317,166,356股，占西安民生总股本的5.28％。其中，已办理质押登记的总股数为100,000,000股，占其所持有西安民生股票的31.53%，占西安民生总股本的1.66%。截至公告披露日，湖南新合作持有西安民生股票质押情况如下表：本次质是否为第一质押股数质押开始日期质押到期日押占其股东名称大股东及一股份性质质权人用途（股）（年-月-日）（年-月-日）所持股致行动人份比例江苏银行股湖南新合作实业首发后机构否100,000,0002017-2-152022-2-14份有限公司31.53%融资投资有限公司类限售股北京分行合计100,000,000----31.53%-三、备查文件1、股份质押证明2、中国证券登记结算有限责任公司股份冻结明细特此公告西安民生集团股份有限公司董事会二○一七年二月十七日",
+        "证券代码：600477证券简称：杭萧钢构编号：2018-107杭萧钢构股份有限公司关于控股股东股票质押式回购交易质押及展期购回的公告本公司董事会及全体董事保证本公告内容不存在任何虚假记载、误导性陈述或者重大遗漏，并对其内容的真实性、准确性和完整性承担个别及连带责任。杭萧钢构股份有限公司（以下简称“公司”）于近日接到公司控股股东、实际控制人单银木先生通知，其已与海通证券股份有限公司（以下简称“海通证券”）办理了股票质押式回购交易业务的补充质押和展期购回业务，现将具体情况公告如下：一、控股股东股票质押式回购交易补充质押及展期购回的情况2017年11月29日，单银木先生因个人原因将其持有的部分公司无限售条件流通股与海通证券办理了期限为12个月的股票质押式回购交易业务，质押总额85,191,662股，约定购回日期为2018年11月29日。并同时与海通证券办理了股票质押式回购交易的展期购回业务，购回交易日展期一年，即购回交易日展期至2019年11月29日。经过2017年度利润分配、期间几次补充质押和部分提前购回，现该笔质押总数为85,191,662股。二、控股股东累计质押情况截止目前，单银木先生持有公司股份总数为753,928,137股，占公司总股本的比例为42.10%，其中持有公司无限售条件流通股份673,957,337股。本次补充质押及质押展期后，单银木先生累计质押股份数为295,282,384股(其中无限售流通股217,282,384股），占其所持公司股份总数的39.17%，占公司总股本的16.49%。公司控股股东、实际控制人单银木先生本次仅为对前次股票质押式回购交易的补充质押及质押展期，不涉及新增融资安排。公司实际控制人单银木先生资信状况良好，其质押融资的还款来源包括上市公司股票分红、投资收益、个人收入等，具备良好的资金偿还能力，质押风险在可控范围之内。上述质押不会导致公司实际控制权发生变更，如若出现其他重大变动情况，公司将严格按照相关规定及时履行信息披露义务。特此公告。杭萧钢构股份有限公司董事会二〇一八年十二月一日",
+
+        "万科企业股份有限公司关于股东持股方式变动及股权质押的提示性公告证券代码：000002、299903证券简称：万科A、万科H代公告编号：〈万〉2016-094本公司及董事会全体成员保证公告内容真实、准确和完整，没有虚假记载、误导性陈述或者重大遗漏。万科企业股份有限公司（以下简称“公司”）于2016年7月12日收到公司股东深圳市钜盛华股份有限公司（以下简称“钜盛华”）的《告知函》，《告知函》显示：“2016年7月11日，钜盛华通过信用证券账户融资融券方式持有的37,357,310股万科A股划回普通证券账户直接持有。2016年4月6日，钜盛华与前海人寿签署《万科企业股份有限公司表决权让渡协议》，钜盛华将其通过信用证券账户融资融券的方式持有的37,357,310股万科股票所对应的全部表决权按协议约定不可撤销的无偿让渡给一致行动人前海人寿；具体信息详见2016年4月9日披露的《简式权益变动报告书》及《详式权益变动报告书》。本次持股方式变更后，表决权让渡情况不发生变化。”公司于2016年7月13日收到钜盛华的另一份《告知函》，其显示：“2016年7月12日，钜盛华将持有的万科37,357,300股无限售流通A股质押给中国银河证券股份有限公司，并已在中国证券登记结算有限责任公司深圳分公司办理完成股权质押登记手续，该部分股权质押期限自2016年7月12日起至质押解除之日止。”截至2016年7月12日，钜盛华通过普通证券账户直接持有公司股份926,070,472股，占公司总股本的8.39%，累计质押股数为926,070,462股，占公司总股本的8.39%。股东股权质押的基本情况：股东是否为第一大股质押开始质押质押股数质权人名称东及一致行动人日期到期日鹏华资产管理（深钜盛华是91,000,0002015/10/15至质押解除圳）有限公司之日止至质押解除鹏华资产管理（深钜盛华是76,821,6422015/10/15之日止圳）有限公司至质押解除鹏华资产管理（深钜盛华是14,178,3582015/10/15之日止圳）有限公司至质押解除鹏华资产管理（深钜盛华是91,000,0002015/10/21之日止圳）有限公司至质押解除鹏华资产管理(深钜盛华是91,000,0002015/10/28之日止圳）有限公司至质押解除鹏华资产管理（深钜盛华是72,099,0002015/10/28之日止圳）有限公司至质押解除鹏华资产管理（深钜盛华是18,901,0002015/10/28之日止圳）有限公司至质押解除鹏华资产管理（深钜盛华是75,861,0002015/11/3之日止圳）有限公司至质押解除鹏华资产管理（深钜盛华是15,139,0002015/11/3之日止圳）有限公司至质押解除鹏华资产管理（深钜盛华是88,894,0932015/11/9之日止圳）有限公司至质押解除鹏华资产管理（深钜盛华是58,360,2132015/11/9之日止圳）有限公司至质押解除鹏华资产管理（深钜盛华是32,639,7872015/11/9之日止圳）有限公司至质押解除鹏华资产管理（深钜盛华是2,105,9072015/11/9之日止圳）有限公司至质押解除鹏华资产管理（深钜盛华是91,000,0002015/11/18之日止圳）有限公司至质押解除鹏华资产管理（深钜盛华是69,713,1622015/11/18之日止圳）有限公司至质押解除中国银河证券股钜盛华是37,357,3002016/7/12之日止份有限公司合计926,070,462以上股东持股方式变动及股权质押情况，提请广大投资者注意投资风险。特此公告。万科企业股份有限公司董事会二〇一六年七月十四日"
+    ];
+
+    var eventLegendDict = {
+        "raise":{"event-title":"增减持事件","TRI-title":"事件触发词","NUM-title":"增减持股数","BEG-title":"计划起始日","END-title":"计划截止日","ORG-title":"增减持目的","NAME-title":"股东名称"},
+        "freezen":{"event-title":"冻结事件","TRI-title":"事件触发词","NUM-title":"冻结股数","BEG-title":"冻结起始日期","END-title":"冻结截止日期","ORG-title":"执行冻结机构","NAME-title":"被冻结股东名称"},
+        "buyback":{"event-title":"回购事件","TRI-title":"事件触发词","NUM-title":"回购股数","BEG-title":"初始交易日","END-title":"购回交易日","ORG-title":"参与机构","NAME-title":"股东名称"},
+        "pledge":{"event-title":"质押事件","TRI-title":"事件触发词","NUM-title":"质押股数","BEG-title":"质押起始日","END-title":"解押日期","ORG-title":"质押方","NAME-title":"股东名称"}
+    };
+    function disableRightMenu(){
+        jQuery("a").bind("contextmenu",function(){
+            return false;
+        });
+    }
+    function sampleSelect(){
+        $("#origin_text").val(testArr[parseInt($("#sample-list").val())]);
+    }
+    function entitySort(entity1, entity2) {
+        return entity2["start"] - entity1["start"];
+    }
+
+    function changeEventType(eventType){
+        legendDict = eventLegendDict[eventType];
+        $("#event-title").html(legendDict["event-title"]);
+        $("#TRI-title").html(legendDict["TRI-title"]);
+        $("#NUM-title").html(legendDict["NUM-title"]);
+        $("#BEG-title").html(legendDict["BEG-title"]);
+        $("#END-title").html(legendDict["END-title"]);
+        $("#ORG-title").html(legendDict["ORG-title"]);
+        $("#NAME-title").html(legendDict["NAME-title"]);
+    }
+
+    function filldata(json) {
+        //python输出的字符串。以字符串形式进去了。所以要转一下。
+        var tagedText = JSON.parse(json["text"]);
+        changeEventType(json["type"]);
+        var general_dict = {};
+        general_dict["event"] = [];
+        general_dict["NUM"] = [];
+        general_dict["TRI"] = [];
+        general_dict["BEG"] = [];
+        general_dict["END"] = [];
+        general_dict["ORG"] = [];
+        general_dict["NAME"] = [];
+        var innerText = "";
+        event_list = [];
+        for (var i = 0; i < tagedText.length; i++) {
+            var oneEvent = tagedText[i];
+            var eventString = oneEvent["string"];
+            eventString.replace("<","&lt;");
+            eventString.replace(">","&gt;");
+            eventString.replace("&","&amp;");
+            var eventEntities = oneEvent["entities"];
+            var eventName = oneEvent["event"].replace(/[<">]/g,"");//去除特殊字符
+            if(eventName!="0")
+                event_list.push(eventName);
+            eventEntities.sort(entitySort);
+            for (var j = 0; j < eventEntities.length; j++) {
+                var display_this_entity = false;
+                if(current_event == ""){
+                    display_this_entity = true;
+                }else{
+                    for(var k = 0;k<eventEntities[j]["event"].length;k++){
+                        if(eventEntities[j]["event"][k] == current_event){
+                            display_this_entity = true;
+                            break;
+                        }
+                    }
+                }
+                var entity_id = "entity"+ i+""+j;
+                if(display_this_entity){
+                    var href = "#";
+                    var list_li = '<li><a id="'+entity_id+'_menu" href="#" onmousedown="switch_entity_checked(\''+entity_id+'\',event)">';
+                    if(eventEntities[j]["type"]=="NAME"){
+                        var name = eventEntities[j]["word"];
+                        var searchType = name.length>=4?"company":"person";
+                        href = "online-graph.html?keyword="+name+"&type="+searchType;
+                        list_li = '<li><a id="'+entity_id+'_menu" href="'+href+'" onmousedown="switch_entity_checked(\''+entity_id+'\',event)">';
+                    }
+                    list_li += eventEntities[j]["word"];
+                    list_li += '</a></li>';
+                    general_dict[eventEntities[j]["type"]].push(list_li);
+                }
+                var beforeEntity = eventString.slice(0, eventEntities[j]["start"]);
+                var afterEntity = eventString.slice(eventEntities[j]["end"], eventString.length);
+                eventString = beforeEntity;
+                if(display_this_entity)
+                    eventString += '<span id="' + entity_id +'" class="' + eventEntities[j]["type"] + '">';
+                eventString += eventEntities[j]["word"];
+                if(display_this_entity)
+                    eventString += '</span>';
+                eventString += afterEntity;
+            }
+            if (eventName != "0") {
+                var style_menu = 'style="background-color: #888"';
+                var style_text = 'style="font-weight:normal;text-decoration:none;"';
+                if(current_event == eventName){
+                    style_menu = "";
+                    style_text = "";
+                }
+                var list_li = '<li><a id="'+eventName+'_menu" '+ style_menu +' href="#"  onmousedown="switch_event_checked(\''+eventName+'\',event)">';
+
+                list_li += "事件:" + eventName;
+                list_li += '</a></li>';
+                general_dict["event"].push(list_li);
+                innerText += '<b '+style_text+' id="' + eventName + '" class="event">';
+                innerText += eventString;
+                innerText += '</b>';
+            } else {
+                innerText += eventString;
+            }
+        }
+        $("#NUM-span").html(general_dict["NUM"].length);
+        $("#TRI-span").html(general_dict["TRI"].length);
+        $("#BEG-span").html(general_dict["BEG"].length);
+        $("#END-span").html(general_dict["END"].length);
+        $("#ORG-span").html(general_dict["ORG"].length);
+        $("#NAME-span").html(general_dict["NAME"].length);
+        $("#event-span").html(general_dict["event"].length);
+        $("#NUM-ul").html(general_dict["NUM"].join(""));
+        $("#TRI-ul").html(general_dict["TRI"].join(""));
+        $("#BEG-ul").html(general_dict["BEG"].join(""));
+        $("#END-ul").html(general_dict["END"].join(""));
+        $("#ORG-ul").html(general_dict["ORG"].join(""));
+        $("#NAME-ul").html(general_dict["NAME"].join(""));
+        $("#event-ul").html(general_dict["event"].join(""));
+        $("#result-text").html(innerText);
+        jQuery("#jquery-accordion-menu").jqueryAccordionMenu();
+        disableRightMenu();
+    }
+    function switch_entity_checked(entity_id,event){
+        if(event.button!=2){
+            return false;
+        }
+        var entitySpan = $("#"+entity_id);
+        var entityA = $("#"+entity_id+"_menu");
+        if(typeof(entitySpan.attr("style"))=="undefined"){
+            entitySpan.attr("style","background-color: transparent");
+            entityA.attr("style","background-color: #888");
+        }
+        else{
+            entitySpan.removeAttr("style");
+            entityA.removeAttr("style");
+        }
+    }
+    function switch_event_checked(event_id,event){
+        if(event.button!=2){
+            return false;
+        }
+        if(event_id == current_event){
+            current_event = "-1";
+            filldata(jsonTemp);
+        }
+        else{
+            current_event = event_id;
+            filldata(jsonTemp);
+        }
+    }
+    function recognize() {
+        if($("#origin_text").val().length==0){
+            alert("请输入文本，或者选择样例。");
+            return;
+        }
+        l.start();
+        jQuery(document).ready(function () {
+            $.ajax({
+                type: "post",
+                async: true,
+                url: "get/taged.json",
+                dataType: "json",
+                data: {
+                    "origin_text": $("#origin_text").val()
+                },
+                success: function (json) {
+                    jsonTemp = json;
+                    current_event = "1"
+                    filldata(json);
+                    $('#result-main').slideDown(); $('#input-main').slideUp();
+                    l.stop();
+                },
+                error: function () {
+                    alert("网络异常。");
+                    l.stop();
+                }
+            });
+        });
+    }
+</script>
+</body>
+</html>
